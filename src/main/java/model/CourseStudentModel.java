@@ -67,4 +67,15 @@ public class CourseStudentModel {
     public void setCourseId(int courseId) {
         this.courseId = courseId;
     }
+
+    @Override
+    public String toString() {
+        return "CourseStudentModel{" +
+                "studentModel=" + studentModel +
+                ", mark='" + mark + '\'' +
+                ", courseModel=" + courseModel +
+                ", studentId=" + studentId +
+                ", courseId=" + courseId +
+                '}';
+    }
 }

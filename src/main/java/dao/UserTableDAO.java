@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserTableDAO extends AConnectToDb {
-    private static final String INSERT_USER_SQL = "INSERT INTO user_table"
-            + "(/*user_table_id,*/login,password,role) VALUES "
-            + "(/*NEXTVAL('user_table_user_table_id_seq'),*/?,?,?)";
+    private static final String INSERT_USER_SQL = "INSERT INTO user_table" + "(login,password,role) VALUES " + "(?,?,?)";
     private static final String SELECT_USER_BY_ID = "SELECT user_table_id,login,password,role FROM user_table WHERE user_table_id=?";
     private static final String SELECT_ALL_USERS = "SELECT * from user_table";
     private static final String DELETE_USER_SQL = "DELETE from user_table where user_table_id=?";

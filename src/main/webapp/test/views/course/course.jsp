@@ -12,9 +12,9 @@
 </head>
 <body>
 <div align="center">
-    <h1>Teacher Form</h1>
+    <h1>Register new course form</h1>
     <form action="/courseServlet" method="post">
-        <center>
+        <div style="text-align: center;">
             <label for="course_name">Enter course name:</label><br>
             <input type="text" minlength="5" maxlength="40" id="course_name" name="course_name" value=""><br>
             <label for="teacher_id">Enter teacher id:</label><br>
@@ -27,7 +27,7 @@
             <input type="date" id="course_end_date" name="course_end_date"
                    value=""><br><br>
             <input type="submit" value="Submit">
-        </center>
+        </div>
     </form>
 
 </div>

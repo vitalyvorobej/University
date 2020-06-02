@@ -73,4 +73,15 @@ public class CourseModel {
     public void setCourseEndDate(Date courseEndDate) {
         this.courseEndDate = courseEndDate;
     }
+
+    @Override
+    public String toString() {
+        return "CourseModel{" +
+                "courseId=" + courseId +
+                ", courseName='" + courseName + '\'' +
+                ", teacherId=" + teacherId +
+                ", courseStartDate=" + courseStartDate +
+                ", courseEndDate=" + courseEndDate +
+                '}';
+    }
 }

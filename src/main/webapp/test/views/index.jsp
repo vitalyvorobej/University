@@ -1,27 +1,57 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-<div class="parallax-container">
-    <div class="parallax">
-        <img
-                src="http://www.baltana.com/files/wallpapers-4/Rain-Background-HQ-Desktop-Wallpaper-14526.jpg">
-    </div>
+<html lang="en">
+<head>
+    <title>Welcome</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        /* Style the header */
+        .header {
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Style the top navigation bar */
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        /* Style the topnav links */
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* Change color on hover */
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Welcome to students course center</h1>
 </div>
---%>
 
+<div class="topnav">
+    <a href="/test/views/registration/memberregister.jsp">Create account</a>
+    <a href="/test/views/login/login.jsp">Login</a>
+</div>
 
-<center>
-    <big>welcome to start page, for start work <a
-            class="btn waves-effect waves-light"
-            href="/test/views/registration/memberRegister.jsp">Register<i class="material-icons right"></i> </a>
-        or use your account
-        <a href="/test/views/login/login.jsp">Login</a>
-    </big>
-</center>
-
-<%--
-<div class="parallax-container">
-    <div class="parallax">
-        <img
-                src="http://www.baltana.com/files/wallpapers-4/Rain-Background-HQ-Desktop-Wallpaper-14526.jpg">
-    </div>
-</div>--%>
+</body>
+</html>

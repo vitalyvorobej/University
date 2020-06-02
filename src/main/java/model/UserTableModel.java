@@ -5,11 +5,8 @@ import javax.validation.constraints.Size;
 public class UserTableModel {
 
     private int userTableId;
-    @Size(min = 5, max = 40)
     private String login;
-    @Size(min = 5, max = 20)
     private String password;
-    @Size(min = 5, max = 10)
     private String role;
 
     public UserTableModel() {
@@ -17,14 +14,13 @@ public class UserTableModel {
     }
 
 
-
-    public UserTableModel(@Size(min = 5, max = 40) String login, @Size(min = 5, max = 20) String password, @Size(min = 5, max = 10) String role) {
+    public UserTableModel(String login, String password, String role) {
         this.login = login;
         this.password = password;
         this.role = role;
     }
 
-    public UserTableModel(int userTableId, @Size(min = 5, max = 40) String login, @Size(min = 5, max = 20) String password, @Size(min = 5, max = 10) String role) {
+    public UserTableModel(int userTableId,String login,String password,String role) {
         this.userTableId = userTableId;
         this.login = login;
         this.password = password;
@@ -63,5 +59,13 @@ public class UserTableModel {
         this.role = role;
     }
 
-
+    @Override
+    public String toString() {
+        return "UserTableModel{" +
+                "userTableId=" + userTableId +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }

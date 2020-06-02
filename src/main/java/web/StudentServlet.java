@@ -1,9 +1,7 @@
 package web;
 
 import dao.StudentDAO;
-import dao.TeacherDAO;
 import model.StudentModel;
-import model.TeacherModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +19,7 @@ public class StudentServlet extends HttpServlet {
         StudentModel studentModel = new StudentModel(studentName, studentSecondName, userTableId);
         StudentDAO studentDAO = new StudentDAO();
         studentDAO.insert(studentModel);
-        request.getRequestDispatcher("/test/views/login/login.jsp").forward(request, response);//TODO change path
+        request.getRequestDispatcher("/test/views/student/studentAfterRegistration.jsp").forward(request, response);
 
     }
 

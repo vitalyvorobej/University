@@ -2,6 +2,7 @@ package web;
 
 import dao.UserTableDAO;
 import model.UserTableModel;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,8 +14,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/")
+@WebServlet("/user")
 public class UserServlet extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(UserServlet.class);
     private UserTableDAO userDAO;
 
     public void init() {
@@ -27,32 +29,37 @@ public class UserServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getServletPath();
-
-        try {
+        /*String action = request.getServletPath() + "/new";*/
+      /*  if (action.equals("/user/new")) {
+            showNewForm(request, response);
+        } */
+/*        try {
             switch (action) {
-                case "/new":
+                case "/user/new":
+                    LOGGER.info("/new is " + action);
                     showNewForm(request, response);
                     break;
-                case "/insert":
+                case "/user/insert":
                     insertUser(request, response);
                     break;
-                case "/delete":
+                case "/user/delete":
                     deleteUser(request, response);
                     break;
-                case "/edit":
+                case "/user/edit":
                     showEditForm(request, response);
                     break;
-                case "/update":
+                case "/user/update":
                     updateUser(request, response);
                     break;
                 default:
+                    LOGGER.info("servlet defaul servlet path is " + action);
                     listUser(request, response);
                     break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
-        }
+        }*/
+        listUser(request, response);
     }
 
     private void listUser(HttpServletRequest request, HttpServletResponse response)

@@ -67,4 +67,15 @@ public class StudentModel {
     public void setUserTableId(int userTableId) {
         this.userTableId = userTableId;
     }
+
+    @Override
+    public String toString() {
+        return "StudentModel{" +
+                "studentId=" + studentId +
+                ", studentName='" + studentName + '\'' +
+                ", studentSecondName='" + studentSecondName + '\'' +
+                ", userTableId=" + userTableId +
+                ", userTableModel=" + userTableModel +
+                '}';
+    }
 }

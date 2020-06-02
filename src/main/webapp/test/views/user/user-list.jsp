@@ -1,3 +1,6 @@
+<%@ page import="model.UserTableModel" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -19,7 +22,7 @@
         </div>
 
         <ul class="navbar-nav">
-            <li><a href="<%=request.getContextPath()%>/list" class="nav-link">Users</a></li>
+            <li><a href="<%=request.getContextPath()%>/user/list" class="nav-link">Users</a></li>
         </ul>
     </nav>
 </header>
@@ -32,8 +35,8 @@
         <h3 class="text-center">List of Users</h3>
         <hr>
         <div class="container text-left">
-
-            <a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add
+            <%--<a href="<%=request.getContextPath()%>/user/new" class="btn btn-success">Add--%>
+            <a href="/test/views/user/user-form.jsp" class="btn btn-success">Add
                 New User</a>
         </div>
         <br>
@@ -49,29 +52,50 @@
             </thead>
             <tbody>
             <!--   for (Todo todo: todos) {  -->
-            <c:forEach var="user" items="${listUser}">
+            <%
+                List<UserTableModel> model = (ArrayList<UserTableModel>) request.getAttribute("listUser");
+
+                for (UserTableModel user : model) {
+                    out.print("<tr>");
+                    out.print("<td>");
+                    out.print(user.getUserTableId());
+                    out.print("</td>");
+                    out.print("<td>");
+                    out.print(user.getLogin());
+                    out.print("</td>");
+                    out.print("<td>");
+                    out.print(user.getPassword());
+                    out.print("</td>");
+                    out.print("<td>");
+                    out.print(user.getRole());
+                    out.print("</td>");
+                    out.print("</tr>");
+                }
+            %>
+            <%--
+            <c:forEach var="listUser" items="${listUser}">
 
                 <tr>
                     <td>
-                        <c:out value="${user.user_table_id}"/>
+                        <c:out value="${listUser.user_table_id}"/>
                     </td>
                     <td>
-                        <c:out value="${user.login}"/>
+                        <c:out value="${listUser.login}"/>
                     </td>
                     <td>
-                        <c:out value="${user.password}"/>
+                        <c:out value="${listUser.password}"/>
                     </td>
                     <td>
-                        <c:out value="${user.role}"/>
+                        <c:out value="${listUser.role}"/>
                     </td>
                     <td>
-                        <a href="edit?user_table_id=<c:out value='${user.user_table_id}' />">Edit</a>
+                        <a href="/user/edit?user_table_id=<c:out value='${listUser.user_table_id}' />">Edit</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <a
-                                href="delete?user_table_id=<c:out value='${user.user_table_id}' />">Delete</a>
+                                href="/user/delete?user_table_id=<c:out value='${listUser.user_table_id}' />">Delete</a>
                     </td>
                 </tr>
-            </c:forEach>
+            </c:forEach>--%>
             <!-- } -->
             </tbody>
 

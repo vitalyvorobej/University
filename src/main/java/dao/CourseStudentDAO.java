@@ -12,7 +12,7 @@ public class CourseStudentDAO extends AConnectToDb {
     private static final String SELECT_BY_ID = "SELECT student_id,mark,course_id" + "FROM course_students WHERE student_id = ? ";
     private static final String SELECT_ALL = "SELECT * FROM course_students";
     private static final String DELETE = "DELETE FROM course_students where student_id=?";
-    private static final String UPDATE = "UPDATE course_students set mark = ?, course_id = ? where student_id =?";
+    private static final String UPDATE = "UPDATE course_students set student_id = ?, mark = ?, course_id = ? where course_id =?";
 
     public CourseStudentDAO() {
     }
@@ -95,9 +95,10 @@ public class CourseStudentDAO extends AConnectToDb {
     public boolean isUpdated(CourseStudentModel courseStudentModel) {
         boolean isRowUpdated = false;
         try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(UPDATE)) {
-            ps.setString(1, courseStudentModel.getMark());
-            ps.setInt(2, courseStudentModel.getCourseId());
-            ps.setInt(3, courseStudentModel.getStudentId());
+            ps.setInt(1, courseStudentModel.getStudentId());
+            ps.setString(2, courseStudentModel.getMark());
+            ps.setInt(3, courseStudentModel.getCourseId());
+
             isRowUpdated = ps.executeUpdate() > 0;
         } catch (SQLException e) {
             printSQLException(e);

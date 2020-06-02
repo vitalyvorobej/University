@@ -67,4 +67,15 @@ public class TeacherModel {
     public void setTeacherId(int teacherId) {
         this.teacherId = teacherId;
     }
+
+    @Override
+    public String toString() {
+        return "TeacherModel{" +
+                "teacherId=" + teacherId +
+                ", teacherName='" + teacherName + '\'' +
+                ", teacherSecondName='" + teacherSecondName + '\'' +
+                ", userTableId=" + userTableId +
+                ", userTableModel=" + userTableModel +
+                '}';
+    }
 }

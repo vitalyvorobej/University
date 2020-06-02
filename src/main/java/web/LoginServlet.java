@@ -2,6 +2,7 @@ package web;
 
 import dao.UserTableDAO;
 import model.UserTableModel;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +14,8 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(LoginServlet.class);
+
     public LoginServlet() {
     }
 
@@ -26,26 +29,26 @@ public class LoginServlet extends HttpServlet {
         try {
             String userValidate = userTableDAO.authenticateUser(userTableModel);
             if (userValidate.equals("Admin")) {
-                System.out.println("Admins home");
+                LOGGER.info("login to admin page");
                 HttpSession session = request.getSession();
                 session.setAttribute("Admin", login);
                 request.setAttribute("login", login);
-                request.getRequestDispatcher("/test/views/userTableRoles/Admin.jsp").forward(request, response);
+                request.getRequestDispatcher("/test/views/userTableRoles/admin.jsp").forward(request, response);
 
             } else if (userValidate.equals("Teacher")) {
-                System.out.println("Teacher home");
+                LOGGER.info("login to teacher page");
                 HttpSession session = request.getSession();
                 session.setAttribute("Teacher", login);
                 request.setAttribute("login", login);
-                request.getRequestDispatcher("/test/views/userTableRoles/Teacher.jsp").forward(request, response);
+                request.getRequestDispatcher("/test/views/userTableRoles/teacher.jsp").forward(request, response);
             } else if (userValidate.equals("Student")) {
-                System.out.println("Student home");
+                LOGGER.info("loggin to student page");
                 HttpSession session = request.getSession();
                 session.setAttribute("Student", login);
                 request.setAttribute("login", login);
-                request.getRequestDispatcher("/test/views/userTableRoles/Student.jsp").forward(request, response);
+                request.getRequestDispatcher("/test/views/userTableRoles/student.jsp").forward(request, response);
             } else {
-                System.out.println("Error message = " + userValidate);
+                LOGGER.warn("Error message = " + userValidate);
                 request.setAttribute("errMessage", userValidate);
                 request.getRequestDispatcher("/test/views/login/login.jsp").forward(request, response);
             }

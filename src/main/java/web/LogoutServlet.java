@@ -1,5 +1,7 @@
 package web;
 
+import org.apache.log4j.Logger;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +13,8 @@ import java.io.IOException;
 
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(LogoutServlet.class);
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false); //Fetch session object
 
@@ -20,7 +24,7 @@ public class LogoutServlet extends HttpServlet {
             request.setAttribute("errMessage", "You have logged out successfully");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/test/views/index.jsp");
             requestDispatcher.forward(request, response);
-            System.out.println("Logged out");
+            LOGGER.info("logged out");
         }
     }
 }
