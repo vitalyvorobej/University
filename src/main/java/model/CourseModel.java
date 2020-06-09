@@ -2,6 +2,9 @@ package model;
 
 import java.util.Date;
 
+/**
+ * Класс-модель описывающая таблицу course
+ */
 public class CourseModel {
 
     private int courseId;

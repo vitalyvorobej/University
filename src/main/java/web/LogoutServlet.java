@@ -22,7 +22,7 @@ public class LogoutServlet extends HttpServlet {
         {
             session.invalidate(); //removes all session attributes bound to the session
             request.setAttribute("errMessage", "You have logged out successfully");
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/test/views/index.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/pages/views/index.jsp");
             requestDispatcher.forward(request, response);
             LOGGER.info("logged out");
         }

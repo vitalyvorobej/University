@@ -19,7 +19,7 @@ public class RegisterServlet extends HttpServlet {
         UserTableModel user = new UserTableModel(login, password, role);
         UserTableDAO userTableDAO = new UserTableDAO();
         userTableDAO.insert(user);
-        request.getRequestDispatcher("/test/views/login/login.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/views/login/login.jsp").forward(request, response);
 
 
     }

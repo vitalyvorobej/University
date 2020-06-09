@@ -1,5 +1,7 @@
 package model;
-
+/**
+ * Класс-модель описывающая таблицу teacher
+ */
 public class TeacherModel {
     private int teacherId;
     private String teacherName;

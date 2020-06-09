@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: test.UserTableDAOTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 3, Errors: 1, Skipped: 0, Time elapsed: 1.848 s <<< FAILURE! - in test.UserTableDAOTest
+selectAll  Time elapsed: 0.385 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at test.UserTableDAOTest.selectAll(UserTableDAOTest.java:44)
+
+isUpdated  Time elapsed: 0.109 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at test.UserTableDAOTest.isUpdated(UserTableDAOTest.java:59)
+
+authenticateUser  Time elapsed: 0.115 s  <<< ERROR!
+java.lang.NullPointerException
+	at test.UserTableDAOTest.authenticateUser(UserTableDAOTest.java:36)
+
+isDeletedById  Time elapsed: 0.113 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at test.UserTableDAOTest.isDeletedById(UserTableDAOTest.java:49)
+

@@ -6,9 +6,19 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * @author Виталий Воробей
+ * Абстрактный класс для создания подключения к базе данных.
+ * База данных - PosgreSQL
+ */
 public abstract class AConnectToDb {
     private static final Logger LOGGER = Logger.getLogger(AConnectToDb.class);
 
+    /**
+     * Метод для создание подключения с использованием url,password,dbDriver.
+     *
+     * @return connection
+     */
     public static Connection createConnection() {
         Connection con = null;
         String dbUrl = "jdbc:postgresql://localhost:5432/course-test";
@@ -29,6 +39,9 @@ public abstract class AConnectToDb {
         return con;
     }
 
+    /**
+     * Метод для печати ошибок класса SQLException.
+     */
     public void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {

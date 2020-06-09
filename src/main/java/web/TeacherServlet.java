@@ -2,7 +2,6 @@ package web;
 
 import dao.TeacherDAO;
 import model.TeacherModel;
-import model.UserTableModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/TeacherServlet")
 public class TeacherServlet extends HttpServlet {
@@ -22,7 +20,7 @@ public class TeacherServlet extends HttpServlet {
         TeacherModel teacherModel = new TeacherModel(teacherName, teacherSecondName, userTableId);
         TeacherDAO teacherDAO = new TeacherDAO();
         teacherDAO.insert(teacherModel);
-        request.getRequestDispatcher("/test/views/login/login.jsp").forward(request, response);//TODO change path
+        request.getRequestDispatcher("/pages/views/login/login.jsp").forward(request, response);//TODO change path
 
     }
 

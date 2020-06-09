@@ -6,15 +6,28 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * @author Виталий Воробей
+ * * Класс для работы с таблицей teacher с использованием SQL команд:
+ * {@value SELECT_BY_ID}   - select данных по ID из таблицы teacher
+ * * {@value INSERT} - вставка данных в таблицу teacher
+ * * {@value SELECT_ALL} - выбрать все записи из таблицы teacher
+ * * {@value DELETE_BY_ID} - удаление записи из таблицы teacher с помощью id-записи
+ * * {@value UPDATE_BY_ID} - изменение записи в таблицы teacher с использование id-записи
+ * * {@value DELETE_ALL} - удаление всех записей из таблицы teacher
+ */
 public class TeacherDAO extends AConnectToDb {
     private static final String INSERT = "INSERT INTO teacher"
             + "(teacher_name,teacher_second_name,user_table_id) VALUES "
             + "(?,?,?)";
     private static final String SELECT_BY_ID = "SELECT teacher_id,teacher_name,teacher_second_name,user_table_id " +
             "FROM teacher WHERE teacher_id=?";
+
     private static final String SELECT_ALL = "SELECT * from teacher";
-    private static final String DELETE = "DELETE from teacher where teacher_id=?";
-    private static final String UPDATE = "UPDATE teacher set teacher_name = ?, teacher_second_name = ?, user_table_id = ? where teacher_id =?";
+    private static final String DELETE_BY_ID = "DELETE from teacher where teacher_id=?";
+    private static final String UPDATE_BY_ID = "UPDATE teacher set teacher_name = ?, teacher_second_name = ?, user_table_id = ? where teacher_id =?";
+    private static final String DELETE_ALL = "DELETE from teacher";
 
     public TeacherDAO() {
     }
@@ -91,7 +104,7 @@ public class TeacherDAO extends AConnectToDb {
 
     public boolean isDeleted(int teacherId) {
         boolean isFieldDeleted = false;
-        try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(DELETE)) {
+        try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(DELETE_BY_ID)) {
             ps.setInt(1, teacherId);
             if (ps.executeUpdate() > 0) {
                 isFieldDeleted = true;
@@ -103,9 +116,10 @@ public class TeacherDAO extends AConnectToDb {
         return isFieldDeleted;
     }
 
+
     public boolean isUpdated(TeacherModel teacherModel) {
         boolean isRowUpdated = false;
-        try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(UPDATE)) {
+        try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(UPDATE_BY_ID)) {
             ps.setString(1, teacherModel.getTeacherName());
             ps.setString(2, teacherModel.getTeacherSecondName());
             ps.setInt(3, teacherModel.getUserTableId());
@@ -115,6 +129,14 @@ public class TeacherDAO extends AConnectToDb {
             printSQLException(e);
         }
         return isRowUpdated;
+    }
+
+    public void deleteAll() {
+        try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(DELETE_ALL)) {
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
     }
 
 }

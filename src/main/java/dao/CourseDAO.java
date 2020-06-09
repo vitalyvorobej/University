@@ -6,6 +6,16 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Виталий Воробей
+ * Класс для работы с базой данных с использованием SQL команд:
+ * {@value SELECT_BY_ID}   - select данных по ID из таблицы course
+ * {@value INSERT} - вставка данных в таблицу course
+ * {@value SELECT_ALL} - выбрать все записи из таблицы course
+ * {@value DELETE_BY_ID} - удаление записи из таблицы course с помощью id-записи
+ * {@value UPDATE_BY_ID} - изменение записи в таблицы course с использование id-записи
+ * {@value DELETE_ALL} - удаление всех записей из таблицы course
+ */
 public class CourseDAO extends AConnectToDb {
     private static final String INSERT = "INSERT INTO course"
             + "(course_name,teacher_id,course_start_date,course_end_date) VALUES "
@@ -13,12 +23,16 @@ public class CourseDAO extends AConnectToDb {
     private static final String SELECT_BY_ID = "SELECT course_id,course_name,teacher_id,course_start_date,course_end_date " +
             "FROM course WHERE course_id=?";
     private static final String SELECT_ALL = "SELECT * from course";
-    private static final String DELETE = "DELETE from course where course_id=?";
-    private static final String UPDATE = "UPDATE course set course_name = ?, teacher_id = ?, course_start_date = ?, course_end_date = ? where course_id =?";
+    private static final String DELETE_BY_ID = "DELETE from course where course_id=?";
+    private static final String UPDATE_BY_ID = "UPDATE course set course_name = ?, teacher_id = ?, course_start_date = ?, course_end_date = ? where course_id =?";
+    private static final String DELETE_ALL = "DELETE from course";
 
     public CourseDAO() {
     }
 
+    /**
+     * Метод для вставки данных в таблицу course
+     */
     public void insert(CourseModel courseModel) {
         try (Connection connection = createConnection();
              PreparedStatement ps = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
@@ -49,6 +63,11 @@ public class CourseDAO extends AConnectToDb {
         }
     }
 
+    /**
+     * Выбор записи используя ID
+     *
+     * @param courseId - персональны идентификатор
+     */
     public CourseModel select(int courseId) {
         CourseModel courseModel = null;
         try (Connection connection = createConnection();
@@ -70,6 +89,9 @@ public class CourseDAO extends AConnectToDb {
         return courseModel;
     }
 
+    /**
+     * Выбрать все данные из таблицы course, поместив их в ArrayList
+     */
     public List<CourseModel> selectAll() {
         List<CourseModel> listCourses = new ArrayList<>();
         try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(SELECT_ALL)) {
@@ -91,9 +113,14 @@ public class CourseDAO extends AConnectToDb {
         return listCourses;
     }
 
+    /**
+     * Метод для удаление записи с использованием ID
+     *
+     * @param courseId - идентификатор записи
+     */
     public boolean isDeleted(int courseId) {
         boolean isCourseDeleted = false;
-        try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(DELETE)) {
+        try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(DELETE_BY_ID)) {
             ps.setInt(1, courseId);
             if (ps.executeUpdate() > 0) {
                 isCourseDeleted = true;
@@ -104,9 +131,15 @@ public class CourseDAO extends AConnectToDb {
         return isCourseDeleted;
     }
 
-    public boolean isuPdated(CourseModel courseModel) {
+    /**
+     * Метод для обновление полей в записи используя ID идентификатор
+     *
+     * @param courseModel - переменная типа CourseModel
+     * @see CourseModel
+     */
+    public boolean isUpdated(CourseModel courseModel) {
         boolean isRowUpdated = false;
-        try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(UPDATE)) {
+        try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(UPDATE_BY_ID)) {
             ps.setString(1, courseModel.getCourseName());
             ps.setInt(2, courseModel.getCourseId());
             ps.setObject(3, courseModel.getCourseStartDate());
@@ -117,5 +150,16 @@ public class CourseDAO extends AConnectToDb {
             printSQLException(e);
         }
         return isRowUpdated;
+    }
+
+    /**
+     * Метод для удаления всех записей из таблицы course
+     */
+    public void deleteAll() {
+        try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(DELETE_ALL)) {
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
     }
 }

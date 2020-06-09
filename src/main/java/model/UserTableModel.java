@@ -1,7 +1,9 @@
 package model;
 
-import javax.validation.constraints.Size;
 
+/**
+ * Класс-модель описывающая таблицу user_table
+ */
 public class UserTableModel {
 
     private int userTableId;
@@ -20,7 +22,7 @@ public class UserTableModel {
         this.role = role;
     }
 
-    public UserTableModel(int userTableId,String login,String password,String role) {
+    public UserTableModel(int userTableId, String login, String password, String role) {
         this.userTableId = userTableId;
         this.login = login;
         this.password = password;

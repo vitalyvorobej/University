@@ -15,6 +15,13 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(LoginServlet.class);
+    private UserTableDAO userDAO;
+    private UserTableModel userTableModel;
+
+    public void init() {
+        userDAO = new UserTableDAO();
+        userTableModel = new UserTableModel();
+    }
 
     public LoginServlet() {
     }
@@ -22,35 +29,34 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        UserTableModel userTableModel = new UserTableModel();
         userTableModel.setLogin(login);
         userTableModel.setPassword(password);
-        UserTableDAO userTableDAO = new UserTableDAO();
+
         try {
-            String userValidate = userTableDAO.authenticateUser(userTableModel);
+            String userValidate = userDAO.authenticateUser(userTableModel);
             if (userValidate.equals("Admin")) {
                 LOGGER.info("login to admin page");
                 HttpSession session = request.getSession();
                 session.setAttribute("Admin", login);
                 request.setAttribute("login", login);
-                request.getRequestDispatcher("/test/views/userTableRoles/admin.jsp").forward(request, response);
+                request.getRequestDispatcher("/pages/views/userTableRoles/admin.jsp").forward(request, response);
 
             } else if (userValidate.equals("Teacher")) {
                 LOGGER.info("login to teacher page");
                 HttpSession session = request.getSession();
                 session.setAttribute("Teacher", login);
                 request.setAttribute("login", login);
-                request.getRequestDispatcher("/test/views/userTableRoles/teacher.jsp").forward(request, response);
+                request.getRequestDispatcher("/pages/views/userTableRoles/teacher.jsp").forward(request, response);
             } else if (userValidate.equals("Student")) {
-                LOGGER.info("loggin to student page");
+                LOGGER.info("login to student page");
                 HttpSession session = request.getSession();
                 session.setAttribute("Student", login);
                 request.setAttribute("login", login);
-                request.getRequestDispatcher("/test/views/userTableRoles/student.jsp").forward(request, response);
+                request.getRequestDispatcher("/pages/views/userTableRoles/student.jsp").forward(request, response);
             } else {
                 LOGGER.warn("Error message = " + userValidate);
                 request.setAttribute("errMessage", userValidate);
-                request.getRequestDispatcher("/test/views/login/login.jsp").forward(request, response);
+                request.getRequestDispatcher("/pages/views/login/login.jsp").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -13,7 +13,7 @@
     </session-config>
     <!--<servlet>
         <servlet-name>add</servlet-name>
-        <jsp-file>test/views/user/user-list.jsp</jsp-file>
+        <jsp-file>java/views/user/user-list.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>add</servlet-name>
