@@ -27,6 +27,9 @@ public class StudentDAO extends AConnectToDb {
     private static final String DELETE_BY_ID = "DELETE from student where student_id=?";
     private static final String UPDATE_BY_ID = "UPDATE student set student_name = ?, student_second_name = ?, user_table_id = ? where student_id =?";
     private static final String DELETE_ALL = "DELETE from student";
+    private static final String GET_STUDENT_ID = "select student.student_id from student\n" +
+            "join user_table\n" +
+            "ON student.user_table_id = user_table.user_table_id WHERE login = ?;";
 
 
     public StudentDAO() {
@@ -60,6 +63,25 @@ public class StudentDAO extends AConnectToDb {
         }
     }
 
+    public int getStudentIdByLogin(String login) {
+        int id = 0;
+        try (Connection connection = createConnection(); PreparedStatement ps = connection.prepareStatement(GET_STUDENT_ID, Statement.RETURN_GENERATED_KEYS)) {
+            StudentModel studentModel = null;
+
+            ps.setString(1, login);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int studentId = rs.getInt("student_id");
+                studentModel = new StudentModel(studentId);
+                id = studentModel.getStudentId();
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+
+        return id;
+    }
+
     public StudentModel select(int studentId) {
         StudentModel studentModel = null;
         try (Connection connection = createConnection();
@@ -79,6 +101,7 @@ public class StudentDAO extends AConnectToDb {
 
         return studentModel;
     }
+
 
     public List<StudentModel> selectAll() {
         List<StudentModel> listStudent = new ArrayList<>();
@@ -113,6 +136,7 @@ public class StudentDAO extends AConnectToDb {
         }
         return isFieldDeleted;
     }
+
 
     public boolean isUpdated(StudentModel studentModel) {
         boolean isRowUpdated = false;

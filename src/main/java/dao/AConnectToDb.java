@@ -21,7 +21,8 @@ public abstract class AConnectToDb {
      */
     public static Connection createConnection() {
         Connection con = null;
-        String dbUrl = "jdbc:postgresql://localhost:5432/course-test";
+        /*String dbUrl = "jdbc:postgresql://localhost:5432/course-test";*/
+        String dbUrl = "jdbc:postgresql://localhost:5432/course";
         String username = "postgres";
         String password = "postgres";
         String dbDriver = "org.postgresql.Driver";

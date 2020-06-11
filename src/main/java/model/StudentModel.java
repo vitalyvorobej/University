@@ -1,4 +1,5 @@
 package model;
+
 /**
  * Класс-модель описывающая таблицу student
  */
@@ -28,6 +29,10 @@ public class StudentModel {
         this.studentName = studentName;
         this.studentSecondName = studentSecondName;
         this.userTableId = userTableId;
+    }
+
+    public StudentModel(int studentId) {
+        this.studentId = studentId;
     }
 
     public int getStudentId() {

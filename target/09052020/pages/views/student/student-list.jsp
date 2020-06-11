@@ -1,13 +1,7 @@
 <%@ page import="model.CourseModel" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
-<%@ page import="model.StudentModel" %><%--
-  Created by IntelliJ IDEA.
-  User: limee
-  Date: 30.05.2020
-  Time: 17:15
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="model.StudentModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="course" %>
 <html>

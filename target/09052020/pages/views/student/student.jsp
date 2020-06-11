@@ -1,37 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: limee
-  Date: 26.05.2020
-  Time: 20:07
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-<div align="center">
-    <h1>Student Form</h1>
-    <form action="/studentServlet" method="post">
-        <center>
-            <label for="student_name">Enter name:</label><br>
-            <input type="text" minlength="5" maxlength="40" id="student_name" name="student_name"><br>
-            <label for="student_second_name">Enter second name:</label><br>
-            <input type="text" minlength="5" maxlength="20" id="student_second_name" name="student_second_name"><br><br>
-            <label for="user_table_id">Enter table id:</label><br>
-            <input type="text" id="user_table_id" name="user_table_id"><br><br>
-            <input type="submit" value="Submit">
-        </center>
-    </form>
-
-</div>
-</body>
-</html>
---%>
-
-
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -103,7 +70,6 @@
 <body>
 
 <form action="/studentServletRegister" method="post">
-    <%--<input type="text" minlength="5" maxlength="40" id="student_name" name="student_name"><br>--%>
     <div class="container">
         <h1>Register</h1>
         <p>Please fill in this form to finish create an account.</p>
@@ -121,9 +87,6 @@
         <button type="submit" class="registerbtn">Register</button>
     </div>
 
-<%--    <div class="container signin">
-        <p>Already have an account? <a href="/java/views/login/login.jsp">Sign in</a>.</p>
-    </div>--%>
 </form>
 
 </body>

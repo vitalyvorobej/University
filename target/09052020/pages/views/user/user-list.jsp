@@ -17,7 +17,7 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: black">
         <div>
-            <a> Course Management App </a>
+            <a style="color: #f1f1f1"> Course Management App </a>
         </div>
     </nav>
 </header>

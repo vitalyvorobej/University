@@ -43,6 +43,11 @@
         }
     </style>
 </head>
+<% //In case, if Editor session is not set, redirect to Login page
+    if ((request.getSession(false).getAttribute("Teacher") == null)) {
+%>
+<jsp:forward page="/pages/views/index.jsp"></jsp:forward>
+<%} %>
 <body>
 
 <div class="header">
@@ -50,10 +55,11 @@
 </div>
 
 <div class="topnav">
-    <a href="<%=request.getContextPath()%>/pages/views/teacher/teacher.jsp">Fill form to finish registration</a>
+    <%--<a href="<%=request.getContextPath()%>/pages/views/teacher/teacher.jsp">Fill form to finish registration</a>--%>
     <a href="<%=request.getContextPath()%>/courseServlet">Show available course</a>
     <a href="<%=request.getContextPath()%>/pages/views/coursestudent/courseStudentMarkForm.jsp">Rate student</a>
-    <a href="<%=request.getContextPath()%>/StudentListServlet">Show all Students</a>
+    <%--<a href="<%=request.getContextPath()%>/StudentListServlet">Show all Students</a>--%>
+    <a href="<%=request.getContextPath()%>/CourseStudentList">Show all Students</a>
     <a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
 
     <%--<a>Your personal ID - <%out.print(request.getAttribute("teacherid"));%></a>--%>

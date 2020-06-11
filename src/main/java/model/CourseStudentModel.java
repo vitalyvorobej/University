@@ -10,7 +10,29 @@ public class CourseStudentModel {
     private int studentId;
     private int courseId;
 
+
     public CourseStudentModel(int studentId, String mark, int courseId) {
+        studentModel = new StudentModel();
+        studentModel.setStudentId(studentId);
+        courseModel = new CourseModel();
+        courseModel.setCourseId(courseId);
+        this.studentId = studentId;
+        this.mark = mark;
+        this.courseId = courseId;
+    }
+
+    public CourseStudentModel(int studentId, String studentName, String studentSecondName, String courseName, int courseId) {
+        studentModel = new StudentModel();
+        studentModel.setStudentId(studentId);
+        studentModel.setStudentName(studentName);
+        studentModel.setStudentSecondName(studentSecondName);
+        courseModel = new CourseModel();
+        courseModel.setCourseName(courseName);
+        courseModel.setCourseId(courseId);
+
+    }
+
+    public CourseStudentModel(String mark, int studentId, int courseId) {
         studentModel = new StudentModel();
         studentModel.setStudentId(studentId);
         courseModel = new CourseModel();

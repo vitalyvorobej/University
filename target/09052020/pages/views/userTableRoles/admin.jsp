@@ -68,6 +68,11 @@ Welcome <%=request.getAttribute("login") %> select what you want:
         }
     </style>
 </head>
+<% //In case, if Editor session is not set, redirect to Login page
+    if ((request.getSession(false).getAttribute("Admin") == null)) {
+%>
+<jsp:forward page="/pages/views/index.jsp"></jsp:forward>
+<%} %>
 <body>
 
 <div class="header">

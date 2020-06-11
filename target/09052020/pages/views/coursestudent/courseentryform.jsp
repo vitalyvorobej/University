@@ -61,7 +61,7 @@
     <a href="/pages/views/userTableRoles/student.jsp">Back to work page</a>
 </div>
 <div class="bottom">
-    <form action="/courseStudentServlet" method="post">
+    <form action="/EnrollToCourse" method="post">
         <div style="text-align: center;">
             <br>
             <br>
@@ -69,7 +69,9 @@
             <input type="text" minlength="1" maxlength="40" id="student_id" name="student_id"><br>
             <input type="hidden" minlength="1" maxlength="20" id="mark" name="mark" value="0">
             <label for="course_id">Enter the id of the course you want to go to:</label><br>
-            <input type="text" minlength="1" maxlength="40" id="course_id" name="course_id"><br><br>
+            <input type="text" minlength="1" maxlength="40" id="course_id" name="course_id">
+            <br>
+            <br>
             <input type="submit" value="Submit">
         </div>
     </form>

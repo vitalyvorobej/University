@@ -37,7 +37,8 @@
             <tr>
                 <th>ID</th>
                 <th>Course_name</th>
-                <th>Teacher_id</th>
+                <%--<th>Teacher_id</th>--%>
+                <%--<th>Teacher</th>--%>
                 <th>Date start</th>
                 <th>Date end</th>
             </tr>
@@ -55,9 +56,9 @@
                     out.print("<td>");
                     out.print(course.getCourseName());
                     out.print("</td>");
-                    out.print("<td>");
-                    out.print(course.getTeacher().getTeacherId()/*getTeacherName()*/);
-                    out.print("</td>");
+                    /*out.print("<td>");
+                    out.print(course.getTeacher().getTeacherId()*//*getTeacherName()*//*);
+                    out.print("</td>");*/
                     out.print("<td>");
                     out.print(course.getCourseStartDate());
                     out.print("</td>");

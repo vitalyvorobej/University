@@ -61,7 +61,7 @@
     <a href="/pages/views/userTableRoles/student.jsp">Back to work page</a>
 </div>
 <div class="bottom">
-    <form action="/courseStudentServlet" method="post">
+    <form action="/EnrollToCourse" method="post">
         <div style="text-align: center;">
             <br>
             <br>

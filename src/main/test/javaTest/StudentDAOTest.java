@@ -11,7 +11,7 @@ class StudentDAOTest {
 
     @Test
     void insert() {
-        StudentModel studentModel = new StudentModel("Holm", "Grip", 6);
+        StudentModel studentModel = new StudentModel("Holm", "Grip", 1);
         studentDAO.insert(studentModel);
     }
 
@@ -20,14 +20,6 @@ class StudentDAOTest {
         assertFalse(studentDAO.selectAll().isEmpty());
     }
 
-    @Test
-    void isDeleted() {
-        assertTrue(studentDAO.isDeleted(5));
-    }
 
-    @Test
-    void isUpdated() {
-        StudentModel studentModel = new StudentModel(1, "Grem", "Depr", 5);
-        assertTrue(studentDAO.isUpdated(studentModel));
-    }
+
 }

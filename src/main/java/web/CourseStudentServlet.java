@@ -16,7 +16,7 @@ public class CourseStudentServlet extends HttpServlet {
         int studentId = Integer.parseInt(request.getParameter("student_id"));
         String mark = request.getParameter("mark");
         int courseId = Integer.parseInt(request.getParameter("course_id"));
-        CourseStudentModel courseStudentModel = new CourseStudentModel(studentId, mark, courseId);
+        CourseStudentModel courseStudentModel = new CourseStudentModel(mark, studentId, courseId);
         CourseStudentDAO courseStudentDAO = new CourseStudentDAO();
         courseStudentDAO.isUpdated(courseStudentModel);
         request.getRequestDispatcher("/pages/views/coursestudent/complite.jsp").forward(request, response);

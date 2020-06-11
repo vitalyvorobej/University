@@ -1,6 +1,8 @@
 package web;
 
+import dao.StudentDAO;
 import dao.UserTableDAO;
+import model.StudentModel;
 import model.UserTableModel;
 import org.apache.log4j.Logger;
 
@@ -17,10 +19,14 @@ public class LoginServlet extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(LoginServlet.class);
     private UserTableDAO userDAO;
     private UserTableModel userTableModel;
+    private StudentDAO studentDAO;
+    private StudentModel studentModel;
 
     public void init() {
         userDAO = new UserTableDAO();
         userTableModel = new UserTableModel();
+        studentDAO = new StudentDAO();
+        studentModel = new StudentModel();
     }
 
     public LoginServlet() {
@@ -50,6 +56,8 @@ public class LoginServlet extends HttpServlet {
             } else if (userValidate.equals("Student")) {
                 LOGGER.info("login to student page");
                 HttpSession session = request.getSession();
+
+                session.setAttribute("id", studentDAO.getStudentIdByLogin(login));
                 session.setAttribute("Student", login);
                 request.setAttribute("login", login);
                 request.getRequestDispatcher("/pages/views/userTableRoles/student.jsp").forward(request, response);

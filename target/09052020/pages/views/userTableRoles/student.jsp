@@ -13,7 +13,7 @@
 <% //In case, if Editor session is not set, redirect to Login page
     if ((request.getSession(false).getAttribute("Student") == null)) {
 %>
-<jsp:forward page="/java/views/index.jsp"></jsp:forward>
+<jsp:forward page="/pages/views/index.jsp"></jsp:forward>
 <%} %>
 <body>
 <div style="text-align: center;"><h2>Student Home</h2></div>
@@ -67,6 +67,11 @@ Welcome <%=request.getAttribute("login") %>, to complete registration <a href="/
         }
     </style>
 </head>
+<% //In case, if Editor session is not set, redirect to Login page
+    if ((request.getSession(false).getAttribute("Student") == null)) {
+%>
+<jsp:forward page="/pages/views/index.jsp"></jsp:forward>
+<%} %>
 <body>
 
 <div class="header">
@@ -74,10 +79,10 @@ Welcome <%=request.getAttribute("login") %>, to complete registration <a href="/
 </div>
 
 <div class="topnav">
-    <a href="<%=request.getContextPath()%>/pages/views/student/student.jsp">Fill form to finish registration</a>
+    <%--<a href="<%=request.getContextPath()%>/pages/views/student/student.jsp">Fill form to finish registration</a>--%>
     <a href="<%=request.getContextPath()%>/courseServlet">Show available course</a>
     <a href="<%=request.getContextPath()%>/pages/views/coursestudent/courseentryform.jsp">Enroll in a course</a>
-    <%--<a <%=request.getParameter("student_id")%>>Ur student ID</a>--%>
+    <a>Your student_id - <%out.print(session.getAttribute("id"));%></a>
     <a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
 
 </div>

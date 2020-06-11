@@ -11,14 +11,8 @@ public class TeacherDAOTest {
 
     @Test
     void insert() {
-        TeacherModel teacherModel = new TeacherModel("Alex", "Sov", 5);
+        TeacherModel teacherModel = new TeacherModel("Alex", "Sov", 1);
         teacherDAO.insert(teacherModel);
-    }
-
-    @Test
-    void update() {
-        TeacherModel teacherModel = new TeacherModel(1, "Alex", "Dmitriev", 2);
-        assertTrue(teacherDAO.isUpdated(teacherModel));
     }
 
 
@@ -27,8 +21,5 @@ public class TeacherDAOTest {
         assertFalse(teacherDAO.selectAll().isEmpty());
     }
 
-    @Test
-    void delete() {
-        assertTrue(teacherDAO.isDeleted(5));
-    }
+
 }

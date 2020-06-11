@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -6,7 +7,7 @@
 <body>
 <div align="center">
     <h1>Register new course form</h1>
-    <form action="${pageContext.request.contextPath}/courseServlet" method="post">
+    <form action="<c:url value="/CreateCourse"/>" method="post">
         <div style="text-align: center;">
             <label for="course_name">Enter course name:</label><br>
             <input type="text" minlength="5" maxlength="40" id="course_name" name="course_name" value=""><br>

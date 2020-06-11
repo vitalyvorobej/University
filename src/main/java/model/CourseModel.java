@@ -28,6 +28,8 @@ public class CourseModel {
         this.courseEndDate = courseEndDate;
     }
 
+
+
     public CourseModel(String courseName, int teacherId, Date dateStart, Date dateEnd) {
         teacher = new TeacherModel();
         teacher.setTeacherId(teacherId);

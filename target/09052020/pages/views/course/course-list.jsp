@@ -1,12 +1,6 @@
 <%@ page import="model.CourseModel" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: limee
-  Date: 30.05.2020
-  Time: 17:15
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="course" %>
 <html>
@@ -37,18 +31,14 @@
     <div class="container">
         <h3 class="text-center">Available Courses</h3>
         <hr>
-        <div class="container text-left">
-            <%--<a href="<%=request.getContextPath()%>/user/new" class="btn btn-success">Add--%>
-            <%--<a href="/java/views/user/user-form.jsp" class="btn btn-success">Add
-                New User</a>--%> <%--TODO дописать создание курса для пользователя админ--%>
-        </div>
         <br>
         <table class="table table-bordered">
             <thead>
             <tr>
                 <th>ID</th>
                 <th>Course_name</th>
-                <th>Teacher_id</th>
+                <%--<th>Teacher_id</th>--%>
+                <%--<th>Teacher</th>--%>
                 <th>Date start</th>
                 <th>Date end</th>
             </tr>
@@ -66,9 +56,9 @@
                     out.print("<td>");
                     out.print(course.getCourseName());
                     out.print("</td>");
-                    out.print("<td>");
-                    out.print(course.getTeacher().getTeacherName()/*getTeacherId()*/);
-                    out.print("</td>");
+                    /*out.print("<td>");
+                    out.print(course.getTeacher().getTeacherId()*//*getTeacherName()*//*);
+                    out.print("</td>");*/
                     out.print("<td>");
                     out.print(course.getCourseStartDate());
                     out.print("</td>");

@@ -2,71 +2,27 @@ package javaTest;
 
 import dao.*;
 import model.UserTableModel;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTableDAOTest extends AConnectToDb {
     private UserTableDAO userTableDAO = new UserTableDAO();
-    private TeacherDAO teacherDAO = new TeacherDAO();
-    private StudentDAO studentDAO = new StudentDAO();
-    private CourseStudentDAO courseStudentDAO = new CourseStudentDAO();
-    private CourseDAO courseDAO = new CourseDAO();
-/*
-    @Before
-    public void clearDB() {
-        courseStudentDAO.deleteAll();
-        teacherDAO.deleteAll();
-        studentDAO.deleteAll();
-        userTableDAO.deleteAll();
-
-    }*/
 
     @Test
     void insert() {
-        UserTableModel userTableModel = new UserTableModel("TestLogin", "password", "Teacher");
+        UserTableModel userTableModel = new UserTableModel("Admin@Login.com", "password", "Admin");
+        UserTableModel userTableModel1 = new UserTableModel("Teacher@login.com", "password", "Teacher");
+        UserTableModel userTableModel2 = new UserTableModel("Student@login.com", "password", "Student");
         userTableDAO.insert(userTableModel);
+        userTableDAO.insert(userTableModel1);
+        userTableDAO.insert(userTableModel2);
     }
-
-    @Test
-    void authenticateUser() {
-        assertEquals("Admin", userTableDAO.authenticateUser(userTableDAO.select(1)));
-        assertEquals("Teacher", userTableDAO.authenticateUser(userTableDAO.select(2)));
-        assertEquals("Student", userTableDAO.authenticateUser(userTableDAO.select(5)));
-    }
-
 
     @Test
     void selectAll() {
         assertFalse(userTableDAO.selectAll().isEmpty());
     }
 
-  /*  @Test
-    void isDeletedById() {
-        assertTrue(userTableDAO.isDeletedById(3));
-        assertTrue(userTableDAO.isDeletedById(4));
 
-    }*/
-
-    /*@Test
-    void isUpdated() {
-        UserTableModel userTableModel = new UserTableModel(1, "updateLogin", "UpdatePassword", "StudentT");
-        UserTableModel userTableModel1 = new UserTableModel(2, "updateTestLogin1", "updatepassword1", "TeacherT");
-
-        assertTrue(userTableDAO.isUpdatedById(userTableModel));
-        assertTrue(userTableDAO.isUpdatedById(userTableModel1));
-
-    }*/
-
-  /*  @Test
-    void deleteAll() {
-        courseStudentDAO.deleteAll();
-        courseDAO.deleteAll();
-        teacherDAO.deleteAll();
-        studentDAO.deleteAll();
-        userTableDAO.deleteAll();
-        courseDAO.selectAll();
-        assertTrue(userTableDAO.selectAll().isEmpty());
-    }*/
 }

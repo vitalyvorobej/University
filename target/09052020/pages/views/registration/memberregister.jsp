@@ -76,24 +76,20 @@
         <hr>
 
         <label for="login"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="login" id="login" required>
+        <input type="text" minlength="5" maxlength="40" placeholder="Enter Email" name="login" id="login" required>
 
         <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+        <input type="password" minlength="5" maxlength="20" placeholder="Enter Password" name="password" id="password" required>
+        <label for="role"><b>Role</b></label>
+        <input type="text" minlength="5" maxlength="10" placeholder="Enter role" name="role" id="role" required>
 
-        <%--<label for="role"><b>Role</b></label>--%>
-        <input type="text" placeholder="Enter role" name="role" id="role" required>
-
-        <%--<label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>--%>
         <hr>
-        <%--<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>--%>
 
         <button type="submit" class="registerbtn">Register</button>
     </div>
 
     <div class="container signin">
-        <p>Already have an account? <a href="/test/views/login/login.jsp">Sign in</a>.</p>
+        <p>Already have an account? <a href="/pages/views/login/login.jsp">Sign in</a>.</p>
     </div>
 </form>
 
